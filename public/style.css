@@ -1,0 +1,396 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**KOD FÖR BODY ifall bakgrundsbilderna inte fungerar**/
+body {
+    background-color: white;
+}
+
+/**Kod för appen*/
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/*En liten "overlay" för att göra bakgrunden mer mörk, med opacitet på den*/
+.App::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+/**APP HEADER**/
+.heading {
+    text-transform: uppercase;
+    font-family: "Julius Sans One", sans-serif;
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    margin: 1em;
+    text-align: center;
+}
+
+.heading::after {
+    content: "check the weather in your area!";
+    display: block;
+    text-shadow: none;
+    color: #D6D2C4;
+    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif;
+}
+
+/*SÖKRUTA OCH KNAPP*/
+.search-wrapper {
+    position: relative;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 40px;
+    height: 50px;
+    background: #D6D2C4;
+    top: 50%;
+    left: 50%;
+}
+
+/*Hover effect med focus*/
+.search-container:hover .search-text,
+.search-text:focus {
+    width: 200px;
+    padding: 0 6px;
+}
+
+.search-container:hover .search-btn {
+    background: white;
+}
+
+/*INPUT OCH KNAPP*/
+.search-text {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #362222;
+    transition: 0.2s ease-in-out;
+    font-size: 1rem;
+    width: 0px;
+}
+
+/*SEARCH BUTTON*/
+.search-btn {
+    color: #362222;
+    border: none;
+    background: #D6D2C4;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+
+/*CONTAINER FÖR APPEN*/
+.main-app {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 2px #D6D2C4 solid;
+    box-shadow: 10px 10px 10px #000;
+}
+
+/*SEARCH RESULTS*/
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Staden*/
+.city-name {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+    color: #171010;
+    font-weight: bold;
+}
+
+/*style på container och datum*/
+.weather-main,
+.today-date,
+.error {
+    font-size: 2rem;
+    color: #171010;
+    font-family: "Roboto", sans-serif;
+    text-transform: lowercase;
+    font-weight: bold;
+}
+
+.error {
+    padding: 1rem;
+    color: red;
+    font-size: 1rem;
+}
+
+.weather-main {
+    font-weight: none;
+}
+
+.temp {
+    font-size: 2rem;
+    color: #171010;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+/*6 dagars prognosen*/
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+}
+
+.card-container::before {
+    content: "";
+    height: 1.5px;
+    width: 70%;
+    background-color: #423F3E;
+    border-radius: 2px;
+    display: block;
+    position: absolute;
+    top: -20%;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    text-transform: lowercase;
+    font-size: 1.3em;
+    color: #171010;
+    font-weight: bold;
+}
+
+/*hover-effect på korten*/
+.card:hover {
+    transform: scale(110%);
+    transition: .1s ease-in;
+}
+
+/*FOOTER*/
+footer p {
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    text-transform: lowercase;
+    margin: 1rem;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+
+    .main-app {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+
+    .main-app {
+        width: 70%;
+    }
+
+    .card-container {
+        transform: scale(.8);
+    }
+
+}
+
+/*media screens för mobilanpassat*/
+@media screen and (max-width: 450px) {
+
+    .main-app {
+        width: 70%;
+    }
+
+    .card-container {
+        transform: scale(.6);
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .main-app {
+        width: 70%;
+    }
+
+    .card-container {
+        transform: scale(.3);
+    }
+}
