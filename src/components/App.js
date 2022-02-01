@@ -95,14 +95,6 @@ function App() {
     coords && fetchDailyWeather()
   }, [coords]) // eslint-disable-line react-hooks/exhaustive-deps
 
- useEffect(() => {
-   console.log(dailyWeather)
-   console.log(currentWeather)
- }, [dailyWeather]) // eslint-disable-line react-hooks/exhaustive-deps
-
- useEffect(() => {
- // console.log(weatherImage())
-}, [currentWeather]) // eslint-disable-line react-hooks/exhaustive-deps
 
 
 return (
